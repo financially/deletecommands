@@ -9,7 +9,7 @@ client.once('ready', async () => {
     const rest = new REST({ version: '10' }).setToken(token);
 
     try {
-        // fetch and delete all guild commands
+        // Fetch and delete all guild commands
         const guilds = await client.guilds.fetch();
 
         for (const [guildId] of guilds) {
@@ -20,7 +20,7 @@ client.once('ready', async () => {
             }
         }
 
-        // fetch and delete all global commands
+        // Fetch and delete all global commands
         const globalCommands = await rest.get(Routes.applicationCommands(clientId));
         for (const command of globalCommands) {
             await rest.delete(`${Routes.applicationCommands(clientId)}/${command.id}`);
